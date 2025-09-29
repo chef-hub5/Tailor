@@ -66,6 +66,19 @@
         .carousel-container:hover {
             animation-play-state: paused;
         }
+        
+        /* Mobile menu animation */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Ensure carousel works on mobile */
+        @media (max-width: 768px) {
+            .carousel-item {
+                width: 280px;
+                height: 350px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -82,6 +95,11 @@
                     <a href="#" onclick="showContact()" class="text-gray-700 hover:text-amber-600 transition">Contact</a>
                     <a href="#" onclick="showFAQ()" class="text-gray-700 hover:text-amber-600 transition">FAQ</a>
                 </div>
+                
+                <!-- Mobile hamburger button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-amber-600 transition" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
                 <div class="flex items-center space-x-4">
                     <button onclick="showWishlist()" class="text-gray-700 hover:text-amber-600 transition">
                         <i class="fas fa-heart"></i> Wishlist (<span id="wishlist-count">0</span>)
@@ -89,6 +107,26 @@
                     <button onclick="showCart()" class="text-gray-700 hover:text-amber-600 transition">
                         <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
                     </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+                <div class="px-4 py-2 space-y-2">
+                    <a href="#" onclick="showHome(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">Home</a>
+                    <a href="#" onclick="showKaftans(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">Kaftans</a>
+                    <a href="#" onclick="showAgbada(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">Agbada</a>
+                    <a href="#" onclick="showAbout(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">About</a>
+                    <a href="#" onclick="showContact(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">Contact</a>
+                    <a href="#" onclick="showFAQ(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">FAQ</a>
+                    <div class="border-t border-gray-200 pt-2 mt-2">
+                        <a href="#" onclick="showWishlist(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">
+                            <i class="fas fa-heart mr-2"></i>Wishlist (<span id="mobile-wishlist-count">0</span>)
+                        </a>
+                        <a href="#" onclick="showCart(); closeMobileMenu()" class="block py-2 text-gray-700 hover:text-amber-600 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Cart (<span id="mobile-cart-count">0</span>)
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -106,7 +144,7 @@
         <!-- Home Page -->
         <div id="home-page">
             <!-- Hero Section -->
-            <section class="relative h-[32rem] bg-cover bg-center" id="hero-section" style="background-image: url('slides/S\ \(7\).jpg');">
+            <section class="relative h-[32rem] bg-cover bg-center" id="hero-section" style="background-image: url('hero/3c3ea354-2abf-45ea-bf45-47b492e8cb74.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div class="text-center text-white">
                         <h1 class="text-5xl font-bold mb-4">Grandeur Tailors</h1>
@@ -229,7 +267,7 @@
                 <div class="max-w-6xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
                         <div>
-                            <img src="./images/tailor-at-work.jpg" alt="Master Tailor at Work" class="w-full rounded-lg shadow-lg">
+                            <img src="slides/S (7).jpg" alt="Master Tailor at Work" class="w-full rounded-lg shadow-lg">
                         </div>
                         <div>
                             <p class="text-lg text-gray-600 mb-6">
@@ -863,6 +901,7 @@
 
         function updateWishlistCount() {
             document.getElementById('wishlist-count').textContent = wishlist.length;
+            document.getElementById('mobile-wishlist-count').textContent = wishlist.length;
         }
 
         function addToCart(productId) {
@@ -957,6 +996,7 @@
         function updateCartCount() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cart-count').textContent = totalItems;
+            document.getElementById('mobile-cart-count').textContent = totalItems;
         }
 
         function showCheckout() {
@@ -1070,6 +1110,32 @@
             }
         }
 
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuIcon = menuButton.querySelector('i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.getElementById('mobile-menu-button');
+            const menuIcon = menuButton.querySelector('i');
+            
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        }
+
 
 
         // Initialize the page
@@ -1108,5 +1174,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986b0ca4176dcd44',t:'MTc1OTE0NDM4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986b442750970ac6',t:'MTc1OTE0NjY2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

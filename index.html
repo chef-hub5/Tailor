@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandeur Tailors - Premium African Attire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .scroll-text {
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .chat-tailor-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chat-tailor-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .chat-tailor-btn:hover::before {
+            left: 100%;
+        }
+        
+        .animate-carousel {
+            animation: carousel-scroll 10s linear infinite;
+        }
+        
+        @keyframes carousel-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .carousel-container:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-amber-600">Grandeur Tailors</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showHome()" class="text-gray-700 hover:text-amber-600 transition">Home</a>
+                    <a href="#" onclick="showKaftans()" class="text-gray-700 hover:text-amber-600 transition">Kaftans</a>
+                    <a href="#" onclick="showAgbada()" class="text-gray-700 hover:text-amber-600 transition">Agbada</a>
+                    <a href="#" onclick="showAbout()" class="text-gray-700 hover:text-amber-600 transition">About</a>
+                    <a href="#" onclick="showContact()" class="text-gray-700 hover:text-amber-600 transition">Contact</a>
+                    <a href="#" onclick="showFAQ()" class="text-gray-700 hover:text-amber-600 transition">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showWishlist()" class="text-gray-700 hover:text-amber-600 transition">
+                        <i class="fas fa-heart"></i> Wishlist (<span id="wishlist-count">0</span>)
+                    </button>
+                    <button onclick="showCart()" class="text-gray-700 hover:text-amber-600 transition">
+                        <i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Utility Header -->
+    <div class="bg-amber-600 text-white py-2 overflow-hidden">
+        <div class="scroll-text text-sm">
+            📍 A5, The Greyheights, Ope-Daniel, Taiwo Street, Ikate, Lekki, Lagos State | 📍 19A, Alake Street, Opposite Abeokuta South LG Secretariat, Ake, Abeokuta, Ogun State | 📧 grandeurtailors@gmail.com | 📞 +234-XXX-XXX-XXXX
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <div id="home-page">
+            <!-- Hero Section -->
+            <section class="relative h-[32rem] bg-cover bg-center" id="hero-section" style="background-image: url('slides/S\ \(7\).jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-5xl font-bold mb-4">Grandeur Tailors</h1>
+                        <p class="text-xl">Premium African Attire & Custom Tailoring</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agbada Section -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Agbada Collection</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="agbada-grid">
+                        <!-- Agbada products will be loaded here -->
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="showAgbada()" class="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition">
+                            See More Agbada
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kaftans Section -->
+            <section class="py-16 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Kaftans Collection</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="kaftans-grid">
+                        <!-- Kaftan products will be loaded here -->
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="showKaftans()" class="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition">
+                            See More Kaftans
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rotating Image Carousel -->
+            <section class="py-16 bg-white overflow-hidden">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Craftsmanship Gallery</h2>
+                    <div class="relative">
+                        <div class="carousel-container flex space-x-8 animate-carousel">
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (1).jpg" alt="Craftsmanship 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (2).jpg" alt="Craftsmanship 2" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (3).jpg" alt="Craftsmanship 3" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (4).jpg" alt="Craftsmanship 4" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (5).jpg" alt="Craftsmanship 5" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="slides/S (6).jpg" alt="Craftsmanship 6" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Duplicate images for seamless loop -->
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-1.jpg" alt="Craftsmanship 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-2.jpg" alt="Craftsmanship 2" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-3.jpg" alt="Craftsmanship 3" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-4.jpg" alt="Craftsmanship 4" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-5.jpg" alt="Craftsmanship 5" class="w-full h-full object-cover">
+                            </div>
+                            <div class="carousel-item flex-shrink-0 w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                                <img src="./images/gallery-6.jpg" alt="Craftsmanship 6" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Product Pages -->
+        <div id="kaftans-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Kaftans Collection</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="all-kaftans-grid">
+                    <!-- All kaftan products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="agbada-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Agbada Collection</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="all-agbada-grid">
+                    <!-- All agbada products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Page -->
+        <div id="product-detail-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <div id="product-detail-content">
+                    <!-- Product detail content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">About Grandeur Tailors</h1>
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
+                        <div>
+                            <img src="./images/tailor-at-work.jpg" alt="Master Tailor at Work" class="w-full rounded-lg shadow-lg">
+                        </div>
+                        <div>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Grandeur Tailors is a premium African fashion house specializing in traditional and contemporary African attire. 
+                                With years of experience in custom tailoring, we bring you the finest quality Agbada, Kaftans, and other traditional wear.
+                            </p>
+                            <p class="text-lg text-gray-600 mb-6">
+                                Our skilled artisans combine traditional craftsmanship with modern techniques to create garments that reflect 
+                                the rich heritage of African fashion while meeting contemporary style standards.
+                            </p>
+                            <p class="text-lg text-gray-600">
+                                Located in Lagos and Abeokuta, we serve customers across Nigeria and beyond, delivering excellence in every stitch.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Contact Us</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-map-marker-alt text-amber-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold">Lagos Office</p>
+                                    <p class="text-gray-600">A5, The Greyheights, Ope-Daniel, Taiwo Street, Ikate, Lekki, Lagos State.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-map-marker-alt text-amber-600 mt-1"></i>
+                                <div>
+                                    <p class="font-semibold">Abeokuta Office</p>
+                                    <p class="text-gray-600">19A, Alake Street, Opposite Abeokuta South LG Secretariat, Ake, Abeokuta, Ogun State.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-amber-600"></i>
+                                <p>grandeurtailors@gmail.com</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-amber-600"></i>
+                                <p>+234-XXX-XXX-XXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="space-y-4">
+                            <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <input type="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <textarea placeholder="Your Message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg"></textarea>
+                            <button type="submit" class="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Page -->
+        <div id="faq-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h1>
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(1)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">How long does it take to complete a custom order?</h3>
+                            <i id="arrow-1" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-1" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Custom orders typically take 2-3 weeks depending on the complexity of the design and current order volume. Rush orders may be available for an additional fee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(2)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">Do you offer international shipping?</h3>
+                            <i id="arrow-2" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-2" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes, we ship worldwide. Shipping costs and delivery times vary by location. International orders typically take 5-10 business days for delivery.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(3)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">Can I request custom measurements?</h3>
+                            <i id="arrow-3" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-3" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Absolutely! We specialize in custom-fitted garments. Please provide your measurements when placing an order. We also offer virtual measurement consultations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(4)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">What fabrics do you use for your garments?</h3>
+                            <i id="arrow-4" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-4" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">We use premium quality fabrics including Ankara, Aso-oke, Lace, Brocade, and other traditional African textiles. All fabrics are carefully selected for durability and comfort.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(5)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">Do you offer alterations on existing garments?</h3>
+                            <i id="arrow-5" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-5" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes, we provide alteration services for both our own garments and those purchased elsewhere. Alteration costs depend on the complexity of the work required.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(6)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">What is your return and exchange policy?</h3>
+                            <i id="arrow-6" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-6" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">We offer exchanges within 14 days of delivery for ready-to-wear items in original condition. Custom-made items are non-returnable unless there's a manufacturing defect.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(7)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">How do I care for my African attire?</h3>
+                            <i id="arrow-7" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-7" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Care instructions vary by fabric type. Generally, we recommend dry cleaning for embellished pieces and gentle hand washing for cotton fabrics. Detailed care instructions are provided with each garment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button onclick="toggleFAQ(8)" class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                            <h3 class="text-xl font-bold">Can I visit your showroom for fittings?</h3>
+                            <i id="arrow-8" class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div id="faq-8" class="hidden px-6 pb-6">
+                            <p class="text-gray-600">Yes! We have showrooms in Lagos and Abeokuta where you can schedule fittings and consultations. Please call ahead to book an appointment with our tailors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishlist Page -->
+        <div id="wishlist-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">My Wishlist</h1>
+                <div id="wishlist-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Wishlist items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Shopping Cart</h1>
+                <div id="cart-content">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Page -->
+        <div id="checkout-page" class="hidden">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12 text-gray-800">Checkout</h1>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Order Summary -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+                        <div id="checkout-order-summary">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Checkout Form -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-6">Delivery & Payment Information</h2>
+                        <form id="checkout-form" class="space-y-6">
+                            <!-- Personal Information -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Personal Information</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <input type="text" id="first-name" placeholder="First Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                    <input type="text" id="last-name" placeholder="Last Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                </div>
+                                <input type="email" id="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent mt-4">
+                                <input type="tel" id="phone" placeholder="Phone Number" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent mt-4">
+                            </div>
+
+                            <!-- Delivery Address -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Delivery Address</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <input type="text" id="city" placeholder="City/LGA" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                    <select id="state" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                                        <option value="">Select State</option>
+                                        <option value="Abia">Abia</option>
+                                        <option value="Adamawa">Adamawa</option>
+                                        <option value="Akwa Ibom">Akwa Ibom</option>
+                                        <option value="Anambra">Anambra</option>
+                                        <option value="Bauchi">Bauchi</option>
+                                        <option value="Bayelsa">Bayelsa</option>
+                                        <option value="Benue">Benue</option>
+                                        <option value="Borno">Borno</option>
+                                        <option value="Cross River">Cross River</option>
+                                        <option value="Delta">Delta</option>
+                                        <option value="Ebonyi">Ebonyi</option>
+                                        <option value="Edo">Edo</option>
+                                        <option value="Ekiti">Ekiti</option>
+                                        <option value="Enugu">Enugu</option>
+                                        <option value="FCT">Federal Capital Territory</option>
+                                        <option value="Gombe">Gombe</option>
+                                        <option value="Imo">Imo</option>
+                                        <option value="Jigawa">Jigawa</option>
+                                        <option value="Kaduna">Kaduna</option>
+                                        <option value="Kano">Kano</option>
+                                        <option value="Katsina">Katsina</option>
+                                        <option value="Kebbi">Kebbi</option>
+                                        <option value="Kogi">Kogi</option>
+                                        <option value="Kwara">Kwara</option>
+                                        <option value="Lagos">Lagos</option>
+                                        <option value="Nasarawa">Nasarawa</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Ogun">Ogun</option>
+                                        <option value="Ondo">Ondo</option>
+                                        <option value="Osun">Osun</option>
+                                        <option value="Oyo">Oyo</option>
+                                        <option value="Plateau">Plateau</option>
+                                        <option value="Rivers">Rivers</option>
+                                        <option value="Sokoto">Sokoto</option>
+                                        <option value="Taraba">Taraba</option>
+                                        <option value="Yobe">Yobe</option>
+                                        <option value="Zamfara">Zamfara</option>
+                                    </select>
+                                </div>
+                                <textarea id="address" placeholder="Full Address" required rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"></textarea>
+                            </div>
+
+                            <!-- Payment Method -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4">Payment Method</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="radio" name="payment-method" value="bank-transfer" class="text-amber-600 focus:ring-amber-500" onchange="togglePaymentFields()">
+                                        <span class="text-gray-700">Bank Transfer</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="radio" name="payment-method" value="pay-on-delivery" class="text-amber-600 focus:ring-amber-500" onchange="togglePaymentFields()">
+                                        <span class="text-gray-700">Pay on Delivery</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Bank Transfer Details -->
+                            <div id="bank-transfer-section" class="hidden">
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-6 rounded-lg mb-6">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-university text-blue-600 text-xl mr-3"></i>
+                                        <h4 class="text-lg font-bold text-blue-800">Bank Transfer Details</h4>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Bank Name</p>
+                                            <p class="font-bold text-gray-800">GTBank</p>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Account Name</p>
+                                            <p class="font-bold text-gray-800">Grandeur Tailors</p>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Account Number</p>
+                                            <p class="font-bold text-blue-600 text-lg">0123456789</p>
+                                            <button onclick="copyAccountNumber()" class="text-xs text-blue-500 hover:text-blue-700 mt-1">
+                                                <i class="fas fa-copy mr-1"></i>Copy
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                        <p class="text-sm text-amber-800">
+                                            <i class="fas fa-info-circle mr-2"></i>
+                                            Please use your order reference as the transfer description for easy identification.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Payment Receipt *</label>
+                                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-amber-400 transition-colors">
+                                        <input type="file" id="receipt-upload" accept="image/*,.pdf" required class="hidden" onchange="handleFileUpload(this)">
+                                        <label for="receipt-upload" class="cursor-pointer">
+                                            <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                                            <p class="text-gray-600 mb-1">Click to upload your payment receipt</p>
+                                            <p class="text-xs text-gray-500">JPG, PNG, or PDF (Max 5MB)</p>
+                                        </label>
+                                        <div id="file-preview" class="hidden mt-4">
+                                            <div class="flex items-center justify-center space-x-2 text-green-600">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span id="file-name"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pay on Delivery Instructions -->
+                            <div id="pay-on-delivery-section" class="hidden">
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 p-6 rounded-lg">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-truck text-green-600 text-xl mr-3"></i>
+                                        <h4 class="text-lg font-bold text-green-800">Pay on Delivery Instructions</h4>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <div class="flex items-start space-x-3">
+                                                <i class="fas fa-info-circle text-green-600 mt-1"></i>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800 mb-2">How Pay on Delivery Works:</h5>
+                                                    <ul class="text-sm text-gray-600 space-y-1">
+                                                        <li>• We will contact you within 24 hours to confirm your order</li>
+                                                        <li>• Schedule a convenient delivery time and location</li>
+                                                        <li>• Our delivery agent will bring your order to your address</li>
+                                                        <li>• Inspect the items before making payment</li>
+                                                        <li>• Pay the exact amount in cash to our delivery agent</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <div class="flex items-start space-x-3">
+                                                <i class="fas fa-exclamation-triangle text-amber-500 mt-1"></i>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800 mb-2">Important Notes:</h5>
+                                                    <ul class="text-sm text-gray-600 space-y-1">
+                                                        <li>• A delivery fee of ₦2,000 - ₦5,000 may apply depending on location</li>
+                                                        <li>• Please have the exact amount ready for payment</li>
+                                                        <li>• Delivery is available within Lagos and Ogun states</li>
+                                                        <li>• Orders are typically delivered within 3-5 business days</li>
+                                                        <li>• You can reschedule delivery once if needed</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                                            <div class="flex items-start space-x-3">
+                                                <i class="fas fa-phone text-blue-600 mt-1"></i>
+                                                <div>
+                                                    <h5 class="font-semibold text-gray-800 mb-2">Contact Information:</h5>
+                                                    <p class="text-sm text-gray-600">
+                                                        Our customer service team will call you from <strong>+234-XXX-XXX-XXXX</strong> to confirm your order details and arrange delivery.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition font-semibold">
+                                <i class="fas fa-check mr-2"></i>Place Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Grandeur Tailors</h3>
+                    <p class="text-gray-300">Premium African Attire & Custom Tailoring</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">CONTACT</h4>
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <p>A5, The Greyheights, Ope-Daniel, Taiwo Street, Ikate, Lekki, Lagos State.</p>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <p>19A, Alake Street, Opposite Abeokuta South LG Secretariat, Ake, Abeokuta, Ogun State.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <p>grandeurtailors@gmail.com</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <p>+234-XXX-XXX-XXXX</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">PRODUCTS</h4>
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <p><a href="#" onclick="showKaftans()" class="hover:text-amber-600 transition">Kaftans</a></p>
+                        <p><a href="#" onclick="showAgbada()" class="hover:text-amber-600 transition">Agbada</a></p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">SITEMAP</h4>
+                    <div class="space-y-2 text-sm text-gray-300">
+                        <p><a href="#" onclick="showAbout()" class="hover:text-amber-600 transition">About</a></p>
+                        <p><a href="#" onclick="showContact()" class="hover:text-amber-600 transition">Contact</a></p>
+                        <p><a href="#" onclick="showFAQ()" class="hover:text-amber-600 transition">FAQ</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-300">Grandeur Tailors ©2025 All Rights Reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-300 hover:text-amber-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-amber-600 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-amber-600 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-amber-600 transition"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data
+        const products = {
+            agbada: [
+                { id: 'GT-AGB-001', name: 'GT-AGB 23/001', price: '₦85,000', image: 'images/A.jpg' },
+                { id: 'GT-AGB-002', name: 'GT-AGB 23/002', price: '₦92,000', image: 'images/B.jpg' },
+                { id: 'GT-AGB-003', name: 'GT-AGB 23/003', price: '₦78,000', image: 'images/C.jpg' },
+                { id: 'GT-AGB-004', name: 'GT-AGB 23/004', price: '₦95,000', image: 'images/D.jpg' },
+                { id: 'GT-AGB-005', name: 'GT-AGB 23/005', price: '₦88,000', image: 'images/E.jpg' },
+                { id: 'GT-AGB-006', name: 'GT-AGB 23/006', price: '₦82,000', image: 'images/F.jpg' }
+            ],
+            kaftans: [
+                { id: 'GT-KAF-001', name: 'GT-KAF 23/001', price: '₦45,000', image: 'K/1 (1).jpg' },
+                { id: 'GT-KAF-002', name: 'GT-KAF 23/002', price: '₦52,000', image: 'K/1 (2).jpg' },
+                { id: 'GT-KAF-003', name: 'GT-KAF 23/003', price: '₦48,000', image: 'K/1 (3).jpg' },
+                { id: 'GT-KAF-004', name: 'GT-KAF 23/004', price: '₦55,000', image: 'K/1 (4).jpg' },
+                { id: 'GT-KAF-005', name: 'GT-KAF 23/005', price: '₦49,000', image: 'K/5.jpg' },
+                { id: 'GT-KAF-006', name: 'GT-KAF 23/006', price: '₦51,000', image: 'K/6.jpg' }
+            ]
+        };
+
+        let wishlist = [];
+        let cart = [];
+
+        function createProductCard(product, showChatButton = true) {
+            const isInWishlist = wishlist.some(item => item.id === product.id);
+            return `
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-80 object-cover cursor-pointer" onclick="showProductDetail('${product.id}')">
+                        <button onclick="toggleWishlist('${product.id}')" class="absolute top-2 right-2 p-2 rounded-full ${isInWishlist ? 'bg-red-500 text-white' : 'bg-white text-gray-600'} hover:bg-red-500 hover:text-white transition">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
+                        <p class="text-xl font-bold text-amber-600 mb-3">${product.price}</p>
+                        ${showChatButton ? `
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="addToCart('${product.id}')" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+                                <i class="fas fa-shopping-cart mr-1"></i>Cart
+                            </button>
+                            <button onclick="chatTailor()" class="chat-tailor-btn bg-amber-600 text-white py-2 px-4 rounded-lg hover:bg-amber-700 transition">
+                                <i class="fab fa-whatsapp mr-1"></i>Chat
+                            </button>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function loadHomeProducts() {
+            // Load first 4 agbada products
+            const agbadaGrid = document.getElementById('agbada-grid');
+            agbadaGrid.innerHTML = products.agbada.slice(0, 4).map(product => createProductCard(product)).join('');
+
+            // Load first 4 kaftan products
+            const kaftansGrid = document.getElementById('kaftans-grid');
+            kaftansGrid.innerHTML = products.kaftans.slice(0, 4).map(product => createProductCard(product)).join('');
+        }
+
+        function showHome() {
+            hideAllPages();
+            document.getElementById('home-page').classList.remove('hidden');
+            loadHomeProducts();
+        }
+
+        function showKaftans() {
+            hideAllPages();
+            document.getElementById('kaftans-page').classList.remove('hidden');
+            const allKaftansGrid = document.getElementById('all-kaftans-grid');
+            allKaftansGrid.innerHTML = products.kaftans.map(product => createProductCard(product)).join('');
+            window.scrollTo(0, 0);
+        }
+
+        function showAgbada() {
+            hideAllPages();
+            document.getElementById('agbada-page').classList.remove('hidden');
+            const allAgbadaGrid = document.getElementById('all-agbada-grid');
+            allAgbadaGrid.innerHTML = products.agbada.map(product => createProductCard(product)).join('');
+            window.scrollTo(0, 0);
+        }
+
+        function showAbout() {
+            hideAllPages();
+            document.getElementById('about-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showContact() {
+            hideAllPages();
+            document.getElementById('contact-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showFAQ() {
+            hideAllPages();
+            document.getElementById('faq-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showWishlist() {
+            hideAllPages();
+            document.getElementById('wishlist-page').classList.remove('hidden');
+            loadWishlist();
+            window.scrollTo(0, 0);
+        }
+
+        function showProductDetail(productId) {
+            const allProducts = [...products.agbada, ...products.kaftans];
+            const product = allProducts.find(p => p.id === productId);
+            
+            if (product) {
+                hideAllPages();
+                document.getElementById('product-detail-page').classList.remove('hidden');
+                window.scrollTo(0, 0);
+                
+                const relatedProducts = allProducts.filter(p => p.id !== productId).slice(0, 4);
+                
+                document.getElementById('product-detail-content').innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                        <div>
+                            <img src="${product.image}" alt="${product.name}" class="w-full rounded-lg shadow-lg">
+                        </div>
+                        <div>
+                            <h1 class="text-4xl font-bold mb-4">${product.name}</h1>
+                            <p class="text-3xl font-bold text-amber-600 mb-6">${product.price}</p>
+                            <div class="space-y-4 mb-8">
+                                <p class="text-gray-600">Premium quality African attire crafted with attention to detail and traditional techniques.</p>
+                                <p class="text-gray-600">Available for custom sizing and personalization.</p>
+                            </div>
+                            <div class="space-y-4">
+                                <button onclick="toggleWishlist('${product.id}')" class="w-full bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition">
+                                    <i class="fas fa-heart mr-2"></i>Add to Wishlist
+                                </button>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button onclick="addToCart('${product.id}')" class="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition">
+                                        <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                                    </button>
+                                    <button onclick="chatTailor()" class="bg-amber-600 text-white py-3 px-6 rounded-lg hover:bg-amber-700 transition">
+                                        <i class="fab fa-whatsapp mr-2"></i>Chat Tailor
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8">You May Also Like</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            ${relatedProducts.map(product => createProductCard(product)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function hideAllPages() {
+            const pages = ['home-page', 'kaftans-page', 'agbada-page', 'about-page', 'contact-page', 'faq-page', 'wishlist-page', 'cart-page', 'checkout-page', 'product-detail-page'];
+            pages.forEach(page => {
+                document.getElementById(page).classList.add('hidden');
+            });
+        }
+
+        function toggleWishlist(productId) {
+            const allProducts = [...products.agbada, ...products.kaftans];
+            const product = allProducts.find(p => p.id === productId);
+            
+            if (product) {
+                const existingIndex = wishlist.findIndex(item => item.id === productId);
+                if (existingIndex > -1) {
+                    wishlist.splice(existingIndex, 1);
+                } else {
+                    wishlist.push(product);
+                }
+                updateWishlistCount();
+                
+                // Refresh current page if needed
+                const currentPage = document.querySelector('div:not(.hidden)');
+                if (currentPage && currentPage.id === 'wishlist-page') {
+                    loadWishlist();
+                }
+            }
+        }
+
+        function loadWishlist() {
+            const wishlistContent = document.getElementById('wishlist-content');
+            if (wishlist.length === 0) {
+                wishlistContent.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12"><p class="text-xl">Your wishlist is empty</p></div>';
+            } else {
+                wishlistContent.innerHTML = wishlist.map(product => createProductCard(product)).join('');
+            }
+        }
+
+        function updateWishlistCount() {
+            document.getElementById('wishlist-count').textContent = wishlist.length;
+        }
+
+        function addToCart(productId) {
+            const allProducts = [...products.agbada, ...products.kaftans];
+            const product = allProducts.find(p => p.id === productId);
+            
+            if (product) {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                updateCartCount();
+            }
+        }
+
+        function showCart() {
+            hideAllPages();
+            document.getElementById('cart-page').classList.remove('hidden');
+            loadCart();
+            window.scrollTo(0, 0);
+        }
+
+        function loadCart() {
+            const cartContent = document.getElementById('cart-content');
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<div class="text-center text-gray-500 py-12"><p class="text-xl">Your cart is empty</p></div>';
+            } else {
+                const total = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('₦', '').replace(',', '')) * item.quantity), 0);
+                cartContent.innerHTML = `
+                    <div class="max-w-4xl mx-auto">
+                        <div class="space-y-4 mb-8">
+                            ${cart.map(item => `
+                                <div class="bg-white rounded-lg shadow-md p-6 flex items-center space-x-4">
+                                    <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded">
+                                    <div class="flex-1">
+                                        <h3 class="text-lg font-semibold">${item.name}</h3>
+                                        <p class="text-amber-600 font-bold">${item.price}</p>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <button onclick="updateCartQuantity('${item.id}', -1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300 transition">-</button>
+                                        <span class="w-8 text-center">${item.quantity}</span>
+                                        <button onclick="updateCartQuantity('${item.id}', 1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300 transition">+</button>
+                                    </div>
+                                    <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 transition">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex justify-between items-center text-xl font-bold mb-4">
+                                <span>Total: ₦${total.toLocaleString()}</span>
+                            </div>
+                            <div class="space-y-3">
+                                <button onclick="showCheckout()" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+                                    <i class="fas fa-credit-card mr-2"></i>Checkout
+                                </button>
+                                <button onclick="chatTailor()" class="w-full bg-amber-600 text-white py-3 px-6 rounded-lg hover:bg-amber-700 transition">
+                                    <i class="fab fa-whatsapp mr-2"></i>Proceed with Tailor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartCount();
+                    loadCart();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            const index = cart.findIndex(item => item.id === productId);
+            if (index > -1) {
+                cart.splice(index, 1);
+                updateCartCount();
+                loadCart();
+            }
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        function showCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            hideAllPages();
+            document.getElementById('checkout-page').classList.remove('hidden');
+            loadCheckoutSummary();
+            window.scrollTo(0, 0);
+        }
+
+        function loadCheckoutSummary() {
+            const checkoutSummary = document.getElementById('checkout-order-summary');
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('₦', '').replace(',', '')) * item.quantity), 0);
+            
+            checkoutSummary.innerHTML = `
+                <div class="space-y-4 mb-6">
+                    ${cart.map(item => `
+                        <div class="flex items-center space-x-4 pb-4 border-b border-gray-200">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">${item.name}</h4>
+                                <p class="text-sm text-gray-600">Qty: ${item.quantity}</p>
+                            </div>
+                            <p class="font-bold text-amber-600">${item.price}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="border-t pt-4">
+                    <div class="flex justify-between items-center text-xl font-bold">
+                        <span>Total:</span>
+                        <span class="text-amber-600">₦${total.toLocaleString()}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+
+
+        function copyAccountNumber() {
+            const accountNumber = '0123456789';
+            navigator.clipboard.writeText(accountNumber).then(function() {
+                // Show temporary success message
+                const button = event.target.closest('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+                button.classList.add('text-green-600');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('text-green-600');
+                }, 2000);
+            }).catch(function() {
+                alert('Account Number: ' + accountNumber);
+            });
+        }
+
+        function handleFileUpload(input) {
+            const filePreview = document.getElementById('file-preview');
+            const fileName = document.getElementById('file-name');
+            
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                fileName.textContent = file.name;
+                filePreview.classList.remove('hidden');
+            } else {
+                filePreview.classList.add('hidden');
+            }
+        }
+
+        function togglePaymentFields() {
+            const bankTransferSection = document.getElementById('bank-transfer-section');
+            const payOnDeliverySection = document.getElementById('pay-on-delivery-section');
+            const receiptUpload = document.getElementById('receipt-upload');
+            const selectedPayment = document.querySelector('input[name="payment-method"]:checked');
+            
+            // Hide both sections first
+            bankTransferSection.classList.add('hidden');
+            payOnDeliverySection.classList.add('hidden');
+            receiptUpload.required = false;
+            
+            if (selectedPayment) {
+                if (selectedPayment.value === 'bank-transfer') {
+                    bankTransferSection.classList.remove('hidden');
+                    receiptUpload.required = true;
+                } else if (selectedPayment.value === 'pay-on-delivery') {
+                    payOnDeliverySection.classList.remove('hidden');
+                }
+            }
+        }
+
+        function chatTailor() {
+            const whatsappNumber = '+2348123456789'; // Replace with actual WhatsApp number
+            const message = 'Hello! I would like to inquire about your tailoring services.';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        function toggleFAQ(faqNumber) {
+            const faqContent = document.getElementById(`faq-${faqNumber}`);
+            const arrow = document.getElementById(`arrow-${faqNumber}`);
+            
+            if (faqContent.classList.contains('hidden')) {
+                faqContent.classList.remove('hidden');
+                arrow.classList.add('rotate-180');
+            } else {
+                faqContent.classList.add('hidden');
+                arrow.classList.remove('rotate-180');
+            }
+        }
+
+
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            showHome();
+            updateWishlistCount();
+            updateCartCount();
+            
+            // Handle checkout form submission
+            document.getElementById('checkout-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+                
+                if (!paymentMethod) {
+                    alert('Please select a payment method');
+                    return;
+                }
+                
+                if (paymentMethod.value === 'bank-transfer') {
+                    const receiptFile = document.getElementById('receipt-upload').files[0];
+                    if (!receiptFile) {
+                        alert('Please upload your payment receipt');
+                        return;
+                    }
+                }
+                
+                // Simulate order processing
+                alert('Order placed successfully! We will contact you shortly to confirm your order and discuss measurements.');
+                
+                // Clear cart and redirect to home
+                cart = [];
+                updateCartCount();
+                showHome();
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986b0ca4176dcd44',t:'MTc1OTE0NDM4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
